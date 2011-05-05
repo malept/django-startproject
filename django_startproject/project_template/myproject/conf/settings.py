@@ -52,6 +52,10 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
 #MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
 
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, PROJECT_MODULE_NAME, 'static'),
+)
+
 ROOT_URLCONF = 'myproject.conf.urls'
 
 LOGIN_URL = '/accounts/login/'
@@ -66,10 +70,6 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, PROJECT_MODULE_NAME, 'templates'),
 )
 
-TEMPLATE_CONTEXT_PROCESSORS += (
-    'staticfiles.context_processors.static_url',
-)
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,5 +78,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.humanize',
+    'django.contrib.staticfiles',
     'south',
 )
