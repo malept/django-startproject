@@ -45,9 +45,14 @@ else:
 # Project URLS and media settings
 #==============================================================================
 
+ROOT_URLCONF = 'myproject.conf.urls'
+
+LOGIN_URL = '/accounts/login/'
+LOGOUT_URL = '/accounts/logout/'
+LOGIN_REDIRECT_URL = '/'
+
 MEDIA_URL = '/uploads/'
 STATIC_URL = '/static/'
-ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
 #MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
@@ -70,13 +75,15 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, PROJECT_MODULE_NAME, 'templates'),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS += (
+    # 'Custom context processors here',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'south',
